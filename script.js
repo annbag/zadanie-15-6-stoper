@@ -48,17 +48,25 @@ class Stopwatch {
 	    this.running = false;
 	    clearInterval(this.watch);
 	}
-
+	resetwatch() {
+		this.running = false;
+		clearInterval(this.watch);
+		this.reset();
+		this.print();
+	}
 }
 
 const stopwatch = new Stopwatch(
 document.querySelector('.stopwatch'));
 
-let startButton = document.getElementById('start');
+const startButton = document.getElementById('start');
 startButton.addEventListener('click', () => stopwatch.start());
 
-let stopButton = document.getElementById('stop');
+const stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', () => stopwatch.stop());
+
+const resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', () => stopwatch.resetwatch());
 
 //pad0 ma za zadanie dodać zero do liczb jednocyfrowych
 function pad0(value) {

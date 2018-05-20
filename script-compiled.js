@@ -74,6 +74,14 @@ var Stopwatch = function () {
 												this.running = false;
 												clearInterval(this.watch);
 								}
+				}, {
+								key: 'resetwatch',
+								value: function resetwatch() {
+												this.running = false;
+												clearInterval(this.watch);
+												this.reset();
+												this.print();
+								}
 				}]);
 
 				return Stopwatch;
@@ -89,6 +97,11 @@ startButton.addEventListener('click', function () {
 var stopButton = document.getElementById('stop');
 stopButton.addEventListener('click', function () {
 				return stopwatch.stop();
+});
+
+var resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', function () {
+				return stopwatch.resetwatch();
 });
 
 //pad0 ma za zadanie dodać zero do liczb jednocyfrowych

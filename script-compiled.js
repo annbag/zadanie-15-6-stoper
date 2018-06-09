@@ -25,6 +25,7 @@ var Stopwatch = function () {
 												};
 								}
 								//metoda format zajmuje się przygotowaniem tekstu do wyświetlenia
+								//innerText zwraca lub ustawia tekst znajdujący się w elemencie (bez html)
 
 				}, {
 								key: 'print',
@@ -82,6 +83,21 @@ var Stopwatch = function () {
 												this.reset();
 												this.print();
 								}
+				}, {
+								key: 'save',
+								value: function save() {
+												var liEl = document.createElement('li');
+												var list = document.querySelector('.results');
+
+												liEl.innerText = this.format(this.times);
+
+												list.appendChild(liEl);
+								}
+				}, {
+								key: 'clear',
+								value: function clear() {
+												document.querySelector('.results').innerHTML = '';
+								}
 				}]);
 
 				return Stopwatch;
@@ -102,6 +118,16 @@ stopButton.addEventListener('click', function () {
 var resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', function () {
 				return stopwatch.resetwatch();
+});
+
+var saveButton = document.getElementById('save');
+saveButton.addEventListener('click', function () {
+				return stopwatch.save();
+});
+
+var clearButton = document.getElementById('clear');
+clearButton.addEventListener('click', function () {
+				return stopwatch.clear();
 });
 
 //pad0 ma za zadanie dodać zero do liczb jednocyfrowych

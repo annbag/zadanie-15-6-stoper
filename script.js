@@ -15,6 +15,7 @@ class Stopwatch {
         };
     }
 //metoda format zajmuje się przygotowaniem tekstu do wyświetlenia
+//innerText zwraca lub ustawia tekst znajdujący się w elemencie (bez html)
     print() {
         this.display.innerText = this.format(this.times);
 	}

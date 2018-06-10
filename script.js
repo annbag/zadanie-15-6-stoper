@@ -55,6 +55,19 @@ class Stopwatch {
 		this.reset();
 		this.print();
 	}
+
+    save() {
+        const liEl = document.createElement('li');
+        const list = document.querySelector('.results');
+
+        liEl.innerText = this.format(this.times);
+
+        list.appendChild(liEl);
+    }
+
+    clear() {
+        document.querySelector('.results').innerHTML = '';
+    }
 }
 
 const stopwatch = new Stopwatch(
@@ -68,6 +81,12 @@ stopButton.addEventListener('click', () => stopwatch.stop());
 
 const resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', () => stopwatch.resetwatch());
+
+const saveButton = document.getElementById('save');
+saveButton.addEventListener('click', () => stopwatch.save());
+
+const clearButton = document.getElementById('clear');
+clearButton.addEventListener('click', () => stopwatch.clear());
 
 //pad0 ma za zadanie dodać zero do liczb jednocyfrowych
 function pad0(value) {
